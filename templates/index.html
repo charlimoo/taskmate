@@ -1,0 +1,228 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Vazirmatn">
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: "Vazirmatn", sans-serif;
+            font-size: 14px;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        .container {
+          width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .chatbox {
+          background: #fff;
+          display: flex;
+          max-height: calc(100vh - 130px);
+          overflow-y: scroll;
+          align-items: stretch;
+          flex-direction: column;
+          border: solid;
+          border-color: #ebebeb;
+          border-width: 0px;
+          padding: 8px;
+          padding-right: 4px;
+          border-radius: 4px;
+        }
+        .chatbox::-webkit-scrollbar {
+          width: 0.5em;
+        }
+
+        .chatbox::-webkit-scrollbar-track {
+          background-color: transparent;
+        }
+
+        .chatbox::-webkit-scrollbar-thumb {
+          background-color: transparent;
+          border-radius: 10px;
+        }
+
+        .ai-message {
+          display: flex;
+          align-self: flex-end;
+          max-width: 70%;
+          background-color: #f3f3f3;
+          padding: 20px;
+          margin: 8px;
+          margin-top: 0px;
+          border-radius: 0px 0px 20px 0px;
+          text-align: right;
+          align-items: flex-start;
+          flex-direction: column;
+      }
+
+
+        .user-message {
+          align-self: flex-start;
+          max-width: 80%;
+          background-color: #ffffff;
+          padding: 10px;
+          padding-right: 0px;
+          margin: 8px;
+          margin-top: 0px;
+          border-radius: 0px 0px 0px 10px;
+        }
+
+        .input-container {
+          width: 100%;
+          bottom: 0;
+          height: 60px;
+          display: flex;
+          flex-direction: row; 
+          margin-top: 10px;
+        }
+
+        #messageInput {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            background-color: #f5f5f5;
+            font-family: "Vazirmatn", sans-serif;
+            font-size: 14px;
+            
+        }
+
+        #sendButton
+         {
+          font-family: "Vazirmatn", sans-serif;
+          font-size: 14px;
+          background-color: #e9e9e9;
+          color: #6c6c6c;
+          font-weight: 500;
+          border: solid;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-radius: 6px 0px 0px 6px;
+          border-width: 0px 1px 0px 0px;
+          border-color: #d6d6d6;
+        }
+        #sendButton:hover
+        {
+            background-color: #ddd;
+        }
+        #deleteAllBtn {
+          display: none;
+          font-family: "Vazirmatn", sans-serif;
+          font-size: 14px;
+          background-color: #eeeeee;
+          color: #505050;
+          font-weight: 500;
+          border: solid;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-width: 0px 0px 0px 1px;
+          border-radius: 0px 6px 6px 0px;
+          border-color: #dcdcdc;
+        }
+        #deleteAllBtn:hover
+        {
+            background-color: #f5d8d8;
+        }
+
+        .full {
+          height: -webkit-fill-available;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+        }
+        .actionbtn {
+          background-color: #a23de0;
+          color: #ffffff;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          margin-top: 10px;
+          cursor: pointer;
+          font-family: "Vazirmatn", sans-serif;
+          font-size: 14px;
+        }
+        .actionbtn:hover {
+          background-color: #bd61f6;
+        }
+        .actionbtndone {
+          border: none;
+          color: #24b64d;
+          font-family: 'Vazirmatn';
+          margin-top: 10px;
+        }
+        #loading {
+          display: none;
+          justify-content: flex-end;
+          margin: 0px;
+          padding: 0px;
+          margin-left: 20px;
+          font-size: 12px;
+          color: #a8a8a8;
+
+        }
+        #error {
+          display: none;
+          justify-content: flex-end;
+          margin: 0px;
+          padding: 0px;
+          margin-left: 20px;
+          font-size: 12px;
+          color: #ff3b3b;
+
+        }
+        .disabled {
+          opacity: 0.5;
+          pointer-events: none; 
+        }
+      
+
+      @media (max-width: 650px) {
+        .container {
+          width: 90%;
+        }
+        .input-container {
+          height: 48px;
+        }
+      }
+
+    </style>
+</head>
+
+<body>
+
+  <div class="full">
+    <div class="container">
+        <div id="chatbox" class="chatbox"></div>
+        <div id="error"><p>خطا! لطفا دوباره تلاش کنید.</p></div>
+        <div id="loading"><p>در حال نوشتن...</p></div>
+        <hr style="border: solid; width: 100%; border-color:#f4f4f4; border-width: 1px;">
+        <div class="input-container">
+            <button id="deleteAllBtn"><img src="{{ url_for('static', filename='clear.svg') }}" width="24" height="24"></button>
+            <input type="text" id="messageInput" placeholder="به آسانیتو پیام دهید">
+            
+            <button id="sendButton"><img src="{{ url_for('static', filename='sent.svg') }}" width="24" height="24"></button>
+        </div>
+    </div>
+  </div>
+    <script src="{{ url_for('static', filename='func.js') }}"></script>
+</body>
+
+</html>

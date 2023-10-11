@@ -140,4 +140,4 @@ def delete_all():
 
 # Run the Flask app if this file is the main entry point
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

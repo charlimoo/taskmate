@@ -8,6 +8,7 @@ import json
 from Function_api import *
 import Function_info
 from config import key, systemconfig, gptmodel
+import os
 
 # Create a Flask application
 app = Flask(__name__)
@@ -16,7 +17,9 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 # Set the OpenAI API key
-openai.api_key = "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"
+api_key = os.environ('KEY')
+# openai.api_key = "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"
+openai.api_key = api_key
 
 
 with app.app_context():

@@ -18,22 +18,24 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 # Set the OpenAI API key
 openai.api_key = key
 
-# Initialize the SQLAlchemy database
-db = SQLAlchemy(app)
 
-# Drop and create all database tables
-db.drop_all()
-db.create_all()
+with app.app_context():
+    # Initialize the SQLAlchemy database
+    db = SQLAlchemy(app)
 
-# Initialize database migration
-migrate = Migrate(app, db)
+    # Drop and create all database tables
+    db.drop_all()
+    db.create_all()
 
-# Enable Cross-Origin Resource Sharing (CORS) for the app
-CORS(app, resources={
-    r"/*": {
-        "origins": "*"
-    }
-})
+    # Initialize database migration
+    migrate = Migrate(app, db)
+
+    # Enable Cross-Origin Resource Sharing (CORS) for the app
+    CORS(app, resources={
+        r"/*": {
+            "origins": "*"
+        }
+    })
 
 # Define a Message model for the database
 class Message(db.Model):

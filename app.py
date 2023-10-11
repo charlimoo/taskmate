@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 # Set the OpenAI API key
-openai.api_key = "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"
+openai.api_key = "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"
 
 
 with app.app_context():

@@ -31,7 +31,7 @@ const sendButtonMessage = (btnmessage, role) => {
   errorIndicator.style.display = 'none';
 
   // Send a message to the server
-  fetch('http://localhost:5000/api/send_message', {
+  fetch(`${process.env.DOMAIN_NAME}/api/send_message`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const sendMessage = (role) => {
   errorIndicator.style.display = 'none';
 
   // Send a message to the server
-  fetch('http://localhost:5000/api/send_message', {
+  fetch(`${process.env.DOMAIN_NAME}/api/send_message`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -130,13 +130,13 @@ const showTempMessage = (tempmessage) => {
   delBtn.style.display = "block";
 
   // Fetch user messages
-  fetch('http://localhost:5000/api/get_user_messages')
+  fetch(`${process.env.DOMAIN_NAME}/api/get_user_messages`)
     .then(response => response.json())
     .then(data => {
       const userMessages = data.messages;
 
       // Fetch AI messages
-      fetch('http://localhost:5000/api/get_ai_messages')
+      fetch(`${process.env.DOMAIN_NAME}/api/get_ai_messages`)
         .then(response => response.json())
         .then(data => {
           const aiMessages = data.messages;
@@ -153,13 +153,13 @@ const getAndSortMessages = () => {
   delBtn.style.display = "block";
 
   // Fetch user messages
-  fetch('http://localhost:5000/api/get_user_messages')
+  fetch(`${process.env.DOMAIN_NAME}/api/get_user_messages`)
     .then(response => response.json())
     .then(data => {
       const userMessages = data.messages;
 
       // Fetch AI messages
-      fetch('http://localhost:5000/api/get_ai_messages')
+      fetch(`${process.env.DOMAIN_NAME}/api/get_ai_messages`)
         .then(response => response.json())
         .then(data => {
           const aiMessages = data.messages;
@@ -215,7 +215,7 @@ const displayMessages = (messages) => {
 
 // Delete all messages
 delBtn.addEventListener('click', () => {
-  fetch('http://localhost:5000/api/delete_all', { method: 'DELETE' })
+  fetch(`${process.env.DOMAIN_NAME}/api/delete_all`, { method: 'DELETE' })
     .then(() => {
       getAndSortMessages();
       delBtn.style.display = "none";

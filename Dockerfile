@@ -16,5 +16,9 @@ COPY . .
 # Expose port 5000 for the Flask app
 EXPOSE 5000 
 
+RUN flask db init
+RUN flask db migrate
+RUN flask db upgrade
+
 # Run the Flask app
 CMD ["python", "app.py"]

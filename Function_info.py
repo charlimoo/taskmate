@@ -18,7 +18,7 @@ functions = [
                     "description": "Phone number of the person",
                 },
                 "genderID": {
-                    "type": "int",
+                    "type": "number",
                     "description": "gender of the person, male is 1 and female is 2, unknown is 3",
                 }
             },

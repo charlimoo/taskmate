@@ -1,0 +1,19 @@
+{
+  "description": "",
+  "title": "عنوان مذاکره",
+  "code": 0,
+  "amount": "10000",
+  "funnelLevelID": 130,
+  "productCategoryIDs": [],
+  "productIDs": [],
+  "personContectIDs": [
+    66022
+  ],
+  "companyContectIDs": [],
+  "successReasons": "",
+  "failureReasons": "",
+  "companyPartnerIDs": [],
+  "personPartnerIDs": [],
+  "mounthlyIncome": 0,
+  "ownerUserID": 370
+}

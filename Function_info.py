@@ -55,5 +55,37 @@ functions = [
             },
             "required": ["name","title","content"],
         },
+    },
+    {
+        "name": "getPhoneByName",
+        "description": "finds the phone number of a person",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the person who we want to find his/her phone number"
+                    }
+            },
+            "required": ["name"],
+        },
+    },
+    {
+        "name": "addNegotiation",
+        "description": "creates a Negotiation. can be for a person in the asanito CRM but the person is optional.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "title of negotiation"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "name of the person who we want to create a negotiation for if asked to",
+                }
+            },
+            "required": ["title"],
+        },
     }
 ]

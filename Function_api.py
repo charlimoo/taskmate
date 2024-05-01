@@ -2,7 +2,7 @@ import requests
 import json
 
 
-def AddLeanWithApi(name, lastName, mobiles, genderID):     
+def AddLeanWithApi(name, lastName, mobiles, genderID=None):     
     
     url = 'https://clouddevbak.asanito.app/api/asanito/Person/AddLeanWithApi'
 
@@ -12,7 +12,8 @@ def AddLeanWithApi(name, lastName, mobiles, genderID):
     data["name"] = name
     data["lastName"] = lastName
     data["mobiles"] = [mobiles]
-    data["genderID"] = [genderID]
+    if genderID is not None:
+        data["genderID"] = [genderID]
 
     
     with open('headers.json', encoding='utf-8') as h:

@@ -33,5 +33,27 @@ functions = [
             },
             "required": ["name","lastName","mobiles"],
         },
+    },
+    {
+        "name": "addNote",
+        "description": "creates a note for a person in the asanito CRM.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the person who we want to add a note in his/her profile"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "summarize the content into a short title for the note",
+                },
+                "content": {
+                    "type": "string",
+                    "description": "the note that the user wants to add to a person's profile",
+                }
+            },
+            "required": ["name","title","content"],
+        },
     }
 ]

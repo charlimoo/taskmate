@@ -13,7 +13,7 @@ def AddLeanWithApi(name, lastName, mobiles, genderID=None):
     data[0]["lastName"] = lastName
     data[0]["mobiles"] = [mobiles]
     if genderID is not None:
-        data[0]["genderID"] = [genderID]
+        data[0]["genderID"] = genderID
 
     
     with open('headers.json', encoding='utf-8') as h:

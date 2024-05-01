@@ -1,7 +1,7 @@
 functions = [
     {
         "name": "AddLeanWithApi",
-        "description": "creates a profile for a person in the CRM",
+        "description": "creates a profile for a person in the asanito CRM.",
         "parameters": {
             "type": "object",
             "properties": {
@@ -19,7 +19,7 @@ functions = [
                 },
                 "genderID": {
                     "type": "number",
-                    "description": "gender of the person, male is 1 and female is 2, unknown is 3. guess the gender based on the given name",
+                    "description": "gender of the person. write 1 for male, 2 for female, and 3 when the gender is unknown. try guessing the gender based on the given name by user",
                 }
             },
             "required": ["name","lastName","mobiles"],

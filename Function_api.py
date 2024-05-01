@@ -1,6 +1,6 @@
 import requests
 import json
-
+from datetime import datetime
 
 def AddLeanWithApi(name, lastName, mobiles, genderID=None):     
     
@@ -107,6 +107,51 @@ def addNegotiation(title, name=None):
     data["title"] = title
     if name is not None:
         data["personContectIDs"][0] = getUserIdByName(name)
+
+    
+    with open('headers.json', encoding='utf-8') as h:
+      headers = json.load(h)
+
+    response = requests.post(url,json=data, headers=headers)
+    if response.status_code == 200:
+      return('Data posted successfully!')
+    else:
+      return('Error posting data')
+    
+    
+def addCall(name, content):     
+    
+    url = 'https://clouddevbak.asanito.app/api/asanito/PhoneCall/addNew'
+
+    with open('addCall.json', encoding='utf-8') as f:
+      data = json.load(f)
+    
+    data["personID"] = getUserIdByName(name)
+    data["date"] = datetime.now().strftime("%Y-%m-%dT%H:%M")
+    data["htmlContent"] = "<p>" + content + "</p>"
+
+    
+    with open('headers.json', encoding='utf-8') as h:
+      headers = json.load(h)
+
+    response = requests.post(url,json=data, headers=headers)
+    if response.status_code == 200:
+      return('Data posted successfully!')
+    else:
+      return('Error posting data')
+
+
+def newMeeting(name, content, title):     
+    
+    url = 'https://clouddevbak.asanito.app/api/asanito/PhoneCall/addNew'
+
+    with open('newMeeting.json', encoding='utf-8') as f:
+      data = json.load(f)
+    
+    data["participants"][0]["personID"] = getUserIdByName(name)
+    data["date"] = datetime.now().strftime("%Y-%m-%dT%H:%M")
+    data["htmlContent"] = "<p>" + content + "</p>"
+    data["title"] = title
 
     
     with open('headers.json', encoding='utf-8') as h:

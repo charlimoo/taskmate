@@ -1,0 +1,27 @@
+{
+  "title": "موضوع ملاقات",
+  "participants": [
+    {
+      "personID": 66022,
+      "companyID": 0,
+      "type": 1
+    }
+  ],
+  "meetingRoomId": null,
+  "createGoogleMeetLink": false,
+  "outcome": 4,
+  "date": "2024-05-01T18:05",
+  "duration": 30,
+  "htmlContent": "<p>شرح ملاقات</p>",
+  "mainParticipantUserID": 370,
+  "otherParticipantUserIDs": [],
+  "pin": false,
+  "relatedCompanyIDs": [],
+  "relatedNegotiationIDs": [],
+  "relatedPersonIDs": [],
+  "outsideRoom": {
+    "address": null,
+    "location": null,
+    "name": "دفتر آسانیتو"
+  }
+}

@@ -92,5 +92,45 @@ functions = [
             },
             "required": ["title"],
         },
+    },
+    {
+        "name": "addCall",
+        "description": "creates a call log for a person in the asanito CRM.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the person who we want to add a call log in his/her profile"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "the note/title that the user wants to add to the call log",
+                }
+            },
+            "required": ["name","content"]
+        }
+    },
+    {
+        "name": "addMeeting",
+        "description": "creates a meeting for a person in the asanito CRM.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "name of the person who we want to add a meeting in his/her profile"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "summarize the content into a short title for the meeting"
+                },
+                "content": {
+                    "type": "string",
+                    "description": "the note/title that the user wants to add to the meeting",
+                }
+            },
+            "required": ["name","content", "title"]
+        }
     }
 ]

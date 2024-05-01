@@ -5,25 +5,6 @@ const sendBtn = document.getElementById('sendButton');
 const delBtn = document.getElementById('deleteAllBtn');
 const loadingIndicator = document.getElementById('loading');
 const errorIndicator = document.getElementById('error');
-const modalOverlay = document.getElementById('modalOverlay');
-const modalContent = document.getElementById('modalContent');
-const buttons = document.querySelectorAll('.button');
-
-
-// show the modal when clicking button
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    modalOverlay.style.display = 'block';
-    modalContent.style.display = 'block';
-  }); 
-});
-
-// hide the modal when clicking button
-modalOverlay.addEventListener('click', () => {
-  modalOverlay.style.display = 'none';
-  modalContent.style.display = 'none';
-});
-
 
 // Listen for input changes in the message input field
 msgInput.addEventListener('input', () => {
@@ -36,12 +17,10 @@ msgInput.addEventListener('input', () => {
   }
 });
 
-
 // Scroll to the bottom of the chatbox
 function scrollToBottom() {
   chatbox.scrollTop = chatbox.scrollHeight;
 }
-
 
 // Send a message via a button click
 const sendButtonMessage = (btnmessage, role) => {
@@ -51,9 +30,8 @@ const sendButtonMessage = (btnmessage, role) => {
   sendBtn.classList.add('disabled');
   errorIndicator.style.display = 'none';
 
-  
   // Send a message to the server
-  fetch('https://taskmate.darkube.app/api/send_message', {
+  fetch('http://127.0.0.1:5000/api/send_message', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -100,7 +78,7 @@ const sendMessage = (role) => {
   errorIndicator.style.display = 'none';
 
   // Send a message to the server
-  fetch('https://taskmate.darkube.app/api/send_message', {
+  fetch('http://127.0.0.1:5000/api/send_message', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -152,13 +130,13 @@ const showTempMessage = (tempmessage) => {
   delBtn.style.display = "block";
 
   // Fetch user messages
-  fetch('https://taskmate.darkube.app/api/get_user_messages')
+  fetch('http://127.0.0.1:5000/api/get_user_messages')
     .then(response => response.json())
     .then(data => {
       const userMessages = data.messages;
 
       // Fetch AI messages
-      fetch('https://taskmate.darkube.app/api/get_ai_messages')
+      fetch('http://127.0.0.1:5000/api/get_ai_messages')
         .then(response => response.json())
         .then(data => {
           const aiMessages = data.messages;
@@ -175,13 +153,13 @@ const getAndSortMessages = () => {
   delBtn.style.display = "block";
 
   // Fetch user messages
-  fetch('https://taskmate.darkube.app/api/get_user_messages')
+  fetch('http://127.0.0.1:5000/api/get_user_messages')
     .then(response => response.json())
     .then(data => {
       const userMessages = data.messages;
 
       // Fetch AI messages
-      fetch('https://taskmate.darkube.app/api/get_ai_messages')
+      fetch('http://127.0.0.1:5000/api/get_ai_messages')
         .then(response => response.json())
         .then(data => {
           const aiMessages = data.messages;
@@ -237,7 +215,7 @@ const displayMessages = (messages) => {
 
 // Delete all messages
 delBtn.addEventListener('click', () => {
-  fetch('https://taskmate.darkube.app/api/delete_all', { method: 'DELETE' })
+  fetch('http://127.0.0.1:5000/api/delete_all', { method: 'DELETE' })
     .then(() => {
       getAndSortMessages();
       delBtn.style.display = "none";

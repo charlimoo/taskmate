@@ -31,7 +31,7 @@ const sendButtonMessage = (btnmessage, role) => {
   errorIndicator.style.display = 'none';
 
   // Send a message to the server
-  fetch('http://127.0.0.1:5000/api/send_message', {
+  fetch('https://taskmate.darkube.app/api/send_message', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ const sendMessage = (role) => {
   errorIndicator.style.display = 'none';
 
   // Send a message to the server
-  fetch('http://127.0.0.1:5000/api/send_message', {
+  fetch('https://taskmate.darkube.app/api/send_message', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -130,13 +130,13 @@ const showTempMessage = (tempmessage) => {
   delBtn.style.display = "block";
 
   // Fetch user messages
-  fetch('http://127.0.0.1:5000/api/get_user_messages')
+  fetch('https://taskmate.darkube.app/api/get_user_messages')
     .then(response => response.json())
     .then(data => {
       const userMessages = data.messages;
 
       // Fetch AI messages
-      fetch('http://127.0.0.1:5000/api/get_ai_messages')
+      fetch('https://taskmate.darkube.app/api/get_ai_messages')
         .then(response => response.json())
         .then(data => {
           const aiMessages = data.messages;
@@ -153,13 +153,13 @@ const getAndSortMessages = () => {
   delBtn.style.display = "block";
 
   // Fetch user messages
-  fetch('http://127.0.0.1:5000/api/get_user_messages')
+  fetch('https://taskmate.darkube.app/api/get_user_messages')
     .then(response => response.json())
     .then(data => {
       const userMessages = data.messages;
 
       // Fetch AI messages
-      fetch('http://127.0.0.1:5000/api/get_ai_messages')
+      fetch('https://taskmate.darkube.app/api/get_ai_messages')
         .then(response => response.json())
         .then(data => {
           const aiMessages = data.messages;
@@ -215,7 +215,7 @@ const displayMessages = (messages) => {
 
 // Delete all messages
 delBtn.addEventListener('click', () => {
-  fetch('http://127.0.0.1:5000/api/delete_all', { method: 'DELETE' })
+  fetch('https://taskmate.darkube.app/api/delete_all', { method: 'DELETE' })
     .then(() => {
       getAndSortMessages();
       delBtn.style.display = "none";

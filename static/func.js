@@ -5,6 +5,25 @@ const sendBtn = document.getElementById('sendButton');
 const delBtn = document.getElementById('deleteAllBtn');
 const loadingIndicator = document.getElementById('loading');
 const errorIndicator = document.getElementById('error');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+const buttons = document.querySelectorAll('.button');
+
+
+// show the modal when clicking button
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    modalOverlay.style.display = 'block';
+    modalContent.style.display = 'block';
+  }); 
+});
+
+// hide the modal when clicking button
+modalOverlay.addEventListener('click', () => {
+  modalOverlay.style.display = 'none';
+  modalContent.style.display = 'none';
+});
+
 
 // Listen for input changes in the message input field
 msgInput.addEventListener('input', () => {
@@ -17,10 +36,12 @@ msgInput.addEventListener('input', () => {
   }
 });
 
+
 // Scroll to the bottom of the chatbox
 function scrollToBottom() {
   chatbox.scrollTop = chatbox.scrollHeight;
 }
+
 
 // Send a message via a button click
 const sendButtonMessage = (btnmessage, role) => {
@@ -30,6 +51,7 @@ const sendButtonMessage = (btnmessage, role) => {
   sendBtn.classList.add('disabled');
   errorIndicator.style.display = 'none';
 
+  
   // Send a message to the server
   fetch('https://taskmate.darkube.app/api/send_message', {
     method: 'POST',

@@ -1,7 +1,7 @@
 functions = [
     {
-        "name": "addLeanWithNegotiation",
-        "description": "creates a profile for a person with a negotiation associated to the person in the CRM",
+        "name": "AddLeanWithApi",
+        "description": "creates a profile for a person in the CRM",
         "parameters": {
             "type": "object",
             "properties": {
@@ -17,16 +17,12 @@ functions = [
                     "type": "string",
                     "description": "Phone number of the person",
                 },
-                "title": {
-                    "type": "string",
-                    "description": "title on the negotiation",
-                },
-                "description": {
-                    "type": "string",
-                    "description": "a short description about the negotiation",
+                "genderID": {
+                    "type": "int",
+                    "description": "gender of the person, male is 1 and female is 2, unknown is 3",
                 }
             },
-            "required": ["name","lastName","mobiles" ,"title" ,"description"],
+            "required": ["name","lastName","mobiles"],
         },
     }
 ]

@@ -112,7 +112,7 @@ functions = [
         }
     },
     {
-        "name": "addMeeting",
+        "name": "newMeeting",
         "description": "creates a meeting for a person in the asanito CRM.",
         "parameters": {
             "type": "object",

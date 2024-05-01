@@ -7,7 +7,6 @@ import openai
 import json
 from Function_api import *
 import Function_info
-from config import systemconfig, gptmodel
 import os
 
 # Create a Flask application
@@ -47,7 +46,7 @@ class Message(db.Model):
     button = db.Column(db.String(500))
 
 # Set the system configuration and initial conversation history
-system = systemconfig
+system = Function_info.systemconfig
 conversation_history = [{"role": "system", "content": system}]
 
 # opening up the chat html in the main route
@@ -67,7 +66,7 @@ def send_message():
 
     # Send a message to the OpenAI chat model
     response = openai.ChatCompletion.create(
-        model=gptmodel,
+        model=Function_info.gptmodel,
         messages=conversation_history,
         functions=Function_info.functions,
         function_call="auto",
@@ -85,7 +84,7 @@ def send_message():
 
         # Send a second message to get AI response after the function call
         second_response = openai.ChatCompletion.create(
-            model=gptmodel,
+            model=Function_info.gptmodel,
             messages=conversation_history,
         )
         ai_response = second_response['choices'][0]['message']['content']

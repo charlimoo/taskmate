@@ -1,5 +1,3 @@
-key = "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"
-
 gptmodel="gpt-3.5-turbo-0613"
 
 systemconfig = """

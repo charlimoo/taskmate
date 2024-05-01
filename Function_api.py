@@ -143,7 +143,7 @@ def addCall(name, content):
 
 def newMeeting(name, content, title):     
     
-    url = 'https://clouddevbak.asanito.app/api/asanito/PhoneCall/addNew'
+    url = 'https://clouddevbak.asanito.app/api/asanito/Meeting/add'
 
     with open('newMeeting.json', encoding='utf-8') as f:
       data = json.load(f)

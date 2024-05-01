@@ -19,7 +19,7 @@ functions = [
                 },
                 "genderID": {
                     "type": "number",
-                    "description": "gender of the person, male is 1 and female is 2, unknown is 3",
+                    "description": "gender of the person, male is 1 and female is 2, unknown is 3. guess the gender based on the given name",
                 }
             },
             "required": ["name","lastName","mobiles"],

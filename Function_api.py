@@ -9,11 +9,11 @@ def AddLeanWithApi(name, lastName, mobiles, genderID=None):
     with open('AddLeanWithApi.json', encoding='utf-8') as f:
       data = json.load(f)
     
-    data["name"] = name
-    data["lastName"] = lastName
-    data["mobiles"] = [mobiles]
+    data[0]["name"] = name
+    data[0]["lastName"] = lastName
+    data[0]["mobiles"] = [mobiles]
     if genderID is not None:
-        data["genderID"] = [genderID]
+        data[0]["genderID"] = [genderID]
 
     
     with open('headers.json', encoding='utf-8') as h:
@@ -24,3 +24,4 @@ def AddLeanWithApi(name, lastName, mobiles, genderID=None):
       return('Data posted successfully!')
     else:
       return('Error posting data')
+    

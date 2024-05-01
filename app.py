@@ -7,7 +7,7 @@ import openai
 import json
 from Function_api import *
 import Function_info
-from config import key, systemconfig, gptmodel
+from config import systemconfig, gptmodel
 import os
 
 # Create a Flask application
